@@ -7,22 +7,49 @@ import java.util.Queue;
 class Solution {
     public List<TreeNode> generateTrees(int n) {
         TreeNode vertex;
-        List<Integer> nodes = new ArrayList<Integer>();
+        List<TreeNode> nodes = new ArrayList<TreeNode>();
+        for (int i = 1; i <= n; i++) {
+            nodes.add(new TreeNode(i));
+        }
 
         //count BST = (2n)!/((n+1!)*n!)
-        int cnt = factorial(2*n)/(factorial(n+1)*factorial(n));
-        while(cnt!=0){
+        int cnt = factorial(2 * n) / (factorial(n + 1) * factorial(n));
+        while (cnt != 0) {
+            for (int i = 1; i <= nodes.size(); i++) {
 
+            }
         }
         return null;
     }
-    int factorial(int n)
-    {
+
+    int factorial(int n) {
         return (n == 1 || n == 0) ? 1 : n * factorial(n - 1);
     }
 
-
+    void insert(int x, TreeNode root) {
+        TreeNode p = root, q;
+        q = new TreeNode(x);
+        while (p != null) {
+            if (q.val < p.val) {
+                if (p.left == null) {
+                    p.left = q;
+                    break;
+                } else
+                    p = p.left;
+            } else {
+                if (p.right == null) {
+                    p.right = q;
+                    break;
+                } else
+                    p = p.right;
+            }
+        }
+    }
 }
+
+
+
+
 
 
 
